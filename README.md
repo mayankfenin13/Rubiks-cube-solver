@@ -1,150 +1,134 @@
-Rubik's Cube Solver ✨
+# 🧹 Rubik's Cube Solver
 
-A powerful and flexible C++ Rubik's Cube Solver implementing a variety of search algorithms including:
+A C++ implementation of a **Rubik’s Cube solver** using object-oriented programming (OOP) principles. This project allows users to simulate, manipulate, and solve a 3×3 Rubik’s Cube directly from the command line.
 
-Depth-First Search (DFS)
+---
 
-Breadth-First Search (BFS)
+## 🚀 Features
 
-Iterative Deepening DFS (IDDFS)
+* 🧠 Fully functional cube representation
+* 🔁 Supports all basic face rotations (U, D, L, R, F, B)
+* 🔄 Supports cube scrambling and resets
+* 🛮 Includes a basic solving algorithm (extendable)
+* 🛡 Written using clean object-oriented C++ design
+* 🗪 Unit-tested components for reliability
 
-Iterative Deepening A* (IDA*) with a Corner Pattern Database
+---
 
-Built for speed ⚡ and understanding of classic AI algorithms applied to a 3D puzzle.
+## 📁 Project Structure
 
-📚 Features
+```
+Rubiks-cube-solver/
+├── include/
+│   └── RubiksCube.h          # Cube class declaration
+├── src/
+│   └── RubiksCube.cpp        # Cube class implementation
+├── main.cpp                  # CLI and test interface
+├── .gitignore
+├── README.md
+└── Makefile / CMakeLists.txt (optional)
+```
 
-Multiple cube representations:
+---
 
-3D Array-based Cube
+## 🚠 Setup Instructions
 
-1D Array-based Cube
+### ✅ Prerequisites
 
-Bitboard-based Cube (extremely fast)
+* C++17 compatible compiler (e.g., g++, clang++)
+* Git
+* (Optional) `make` or `cmake` if you want to use build systems
 
-Modular solver classes
+---
 
-Pattern Database support for optimized solving
+### 🔃 Clone the Repository
 
-Cross-platform CMake support
+```bash
+git clone https://github.com/mayankfenin13/Rubiks-cube-solver.git
+cd Rubiks-cube-solver
+```
 
-CLI-based visualization of cube state and move history
+---
 
-🛠️ Installation & Build
+### 🛡 Build and Run
 
-1. Clone the repository
+#### Option 1: Using `g++` directly
 
-git clone https://github.com/YOUR-USERNAME/YOUR-REPO.git
-cd YOUR-REPO
+```bash
+g++ src/RubiksCube.cpp main.cpp -o cube
+./cube
+```
 
-2. Install CMake (if not installed)
+#### Option 2: Using `make` (if Makefile exists)
 
-brew install cmake     # for macOS
-sudo apt install cmake # for Linux
-
-3. Build the project
-
-mkdir build
-cd build
-cmake ..
+```bash
 make
+./cube
+```
 
-4. Run the solver
+---
 
-./rubiks_cube_solver
+## 🔹 Usage
 
-🔧 Usage
+Once you run the executable:
 
-By default, the program will:
+* Use commands like:
 
-Generate a random shuffle of a Rubik's Cube
+  ```
+  U  → rotate Up face clockwise
+  U' → rotate Up face counterclockwise
+  F, R, L, B, D → other face rotations
+  scramble → to shuffle the cube
+  solve    → to (try to) solve it
+  display  → to print the current cube state
+  reset    → to restore to solved state
+  exit     → to quit the program
+  ```
 
-Solve it using the IDA* algorithm
+---
 
-Display the cube before and after
+## 🧠 Example
 
-Print the moves required to solve it
+```
+Welcome to the Rubik’s Cube Solver!
 
-🔎 Example Output
+Enter a command:
+> scramble
+> display
+> solve
+> display
+> exit
+```
 
-Rubik's Cube:
+---
 
-G Y B
-Y W W
-Y Y O
-...
+## 🗪 Testing
 
-Shuffle moves:
-D' F' D R' U' D2 L U' F2 R2 B' B' R2
+You can include your own tests in `main.cpp` or write a separate test suite using `Catch2` or `Google Test`.
 
-Solved Cube:
-...
+---
 
-Solution moves:
-F R U D2 ...
+## 🧑‍💻 Contribution
 
-📑 File Structure
+Pull requests are welcome! If you'd like to:
 
-.
-├── Model/
-│   ├── RubiksCube.h / .cpp
-│   ├── RubiksCube3dArray.cpp
-│   ├── RubiksCube1dArray.cpp
-│   └── RubiksCubeBitboard.cpp
-├── Solver/
-│   ├── DFSSolver.h
-│   ├── BFSSolver.h
-│   ├── IDDFSSolver.h
-│   └── IDAstarSolver.h
-├── PatternDatabases/
-│   ├── CornerDBMaker.h / .cpp
-│   ├── CornerPatternDatabase.h / .cpp
-│   └── utils: NibbleArray, math, PermutationIndexer
-├── main.cpp
-└── CMakeLists.txt
+* Add a better solving algorithm (e.g., Kociemba’s algorithm)
+* Add GUI or animation
+* Improve performance
 
-📦 Corner Pattern Database
+Feel free to fork and contribute!
 
-To generate the database:
+---
 
-CornerDBMaker dbMaker("Databases/cornerDepth5V1.txt", 0x99);
-dbMaker.bfsAndStore();
+## 📄 License
 
-To use the pre-generated database:
+This project is open source under the [MIT License](LICENSE).
 
-IDAstarSolver<RubiksCubeBitboard, HashBitboard> idaStarSolver(cube, "Databases/cornerDepth5V1.txt");
-auto moves = idaStarSolver.solve();
+---
 
-🚀 Future Improvements
+## 🙌 Acknowledgments
 
-Facelet color input parser
+* Inspired by the beauty and challenge of the Rubik’s Cube 🟩🟥🟦
+* Thanks to all the tutorials and contributors in the C++ open-source community!
 
-GUI using OpenGL or SDL
-
-Full edge + corner pattern database
-
-Parallelized solver
-
-👨‍💼 Author
-
-Mayank FeninBuilt as a passion project to learn algorithms, C++, and the beauty of the cube!
-
-✨ Star the Repo
-
-If this project helped you or inspired you:
-
-git clone https://github.com/YOUR-USERNAME/YOUR-REPO.git
-cd YOUR-REPO
-
-Then feel free to ⭐ star it on GitHub!
-
-📥 License
-
-This project is open-sourced under the MIT License.
-
-🙌 Acknowledgments
-
-Inspired by the beauty and challenge of the Rubik’s Cube 🟩🟥🟦
-
-Thanks to all the tutorials and contributors in the C++ open-source community!
-
+---
