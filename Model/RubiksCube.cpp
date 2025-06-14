@@ -1,9 +1,5 @@
-//
-// Created by Shubham Patil on 17/12/21.
-//
-
 #include "RubiksCube.h"
-
+#include<iostream>
 //
 //Given a color return it's first letter
 //
